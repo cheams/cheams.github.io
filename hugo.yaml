@@ -1,0 +1,87 @@
+baseURL: "https://cheams.github.io/"
+languageCode: "en-us"
+title: "cheams's bolg"
+paginate: 5
+theme: ["PaperMod"]
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+caches:
+  images:
+    dir: ":cacheDir/images"
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # needed for search
+
+params:
+  env: production # for opengraph, twitter-cards, schema and analytics.
+  title: "Cheams's bolg"
+  description: "a lasting dream"
+  keywords: [Blog, Portfolio, PaperMod]
+  author: "cheams"
+  # author: ["Me", "You"] # multiple authors
+  images: ["<link-or-path-to-image>"]
+  DateFormat: "January 2, 2006"
+  defaultTheme: auto # dark, light
+  disableThemeToggle: false
+
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: false
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: false
+  hidemeta: false
+  hideSummary: false
+
+  homeInfoParams:
+    Title: "👋 Welcome to Cheams’Log"
+    Content: "The fragment of a dead volcano in my pocket, I walk to the end of endless frost."
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/cheams"
+    - name: x
+      url: "https://x.com/yourname"
+
+menu:
+  main:
+    - identifier: posts
+      name: Posts
+      url: /posts/
+      weight: 5
+    - identifier: archives
+      name: Archives
+      url: /archives/
+      weight: 15
+    - identifier: search
+      name: Search
+      url: /search/
+      weight: 25
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 40
+    - identifier: categories
+      name: Categories
+      url: /categories/
+      weight: 50
+    - identifier: faq
+      name: FAQ
+      url: /faq/
+      weight: 60
