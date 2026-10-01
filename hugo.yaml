@@ -45,9 +45,23 @@ params:
   UseHugoToc: true
   disableSpecial1stPost: false
   disableScrollToTop: false
-  comments: false
+  comments: true
   hidemeta: false
   hideSummary: false
+
+  # Giscus comment system — https://giscus.app
+  # Comments are stored as GitHub Discussions in the repo above.
+  giscus:
+    repo: "cheams/cheams.github.io"
+    repoId: "R_kgDORkQYhg"
+    category: "General"
+    categoryId: "DIC_kwDORkQYhs4DG1h0"
+    mapping: "pathname" # one discussion per page path
+    reactionsEnabled: true
+    emitMetadata: false
+    inputPosition: "top"
+    theme: "preferred_color_scheme"
+    lang: "en"
 
   homeInfoParams:
     Title: "👋 Welcome to Cheams’Log"

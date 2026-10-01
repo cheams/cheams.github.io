@@ -1,0 +1,84 @@
+{{- /* Comments area start */ -}}
+{{- /* Giscus — https://giscus.app  |  config lives in hugo.yaml under params.giscus */ -}}
+{{- $g := site.Params.giscus -}}
+{{- $enabled := .Param "comments" | default site.Params.comments -}}
+{{- if and $g $g.repo $g.repoId $enabled -}}
+<section class="giscus-comments" id="comments">
+  <h2 class="giscus-heading">{{ $g.title | default "Comments" }}</h2>
+
+  <script
+    src="https://giscus.app/client.js"
+    data-repo="{{ $g.repo }}"
+    data-repo-id="{{ $g.repoId }}"
+    data-category="{{ $g.category }}"
+    data-category-id="{{ $g.categoryId }}"
+    data-mapping="{{ $g.mapping | default "pathname" }}"
+    data-reactions-enabled="{{ if eq $g.reactionsEnabled true }}1{{ else }}0{{ end }}"
+    data-emit-metadata="{{ if eq $g.emitMetadata true }}1{{ else }}0{{ end }}"
+    data-input-position="{{ $g.inputPosition | default "bottom" }}"
+    data-theme="{{ $g.theme | default "preferred_color_scheme" }}"
+    data-lang="{{ $g.lang | default "en" }}"
+    crossorigin="anonymous"
+    async
+  ></script>
+
+  {{- /* Keep the comment box in sync with PaperMod's manual light/dark toggle. */ -}}
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var frame = null;
+
+      function currentTheme() {
+        return root.dataset.theme === "dark" ? "dark" : "light";
+      }
+
+      function push(theme) {
+        if (!frame || !frame.contentWindow) return;
+        try {
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme: theme } } },
+            "https://giscus.app"
+          );
+        } catch (e) {
+          /* iframe not ready yet — the load message will retry */
+        }
+      }
+
+      new MutationObserver(function () {
+        push(currentTheme());
+      }).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+
+      /* giscus posts a ready message from the iframe window once it boots */
+      window.addEventListener(
+        "message",
+        function (event) {
+          if (event.origin !== "https://giscus.app") return;
+          if (!event.data || typeof event.data.giscus === "undefined") return;
+          frame = event.source;
+          push(currentTheme());
+        },
+        true
+      );
+    })();
+  </script>
+</section>
+
+<style>
+  .giscus-comments {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .giscus-heading {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 768px) {
+    .giscus-comments {
+      margin-top: 2rem;
+    }
+  }
+</style>
+{{- end -}}
+{{- /* Comments area end */ -}}
