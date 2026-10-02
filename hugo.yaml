@@ -67,12 +67,6 @@ params:
     Title: "👋 Welcome to Cheams’Log"
     Content: "The fragment of a dead volcano in my pocket, I walk to the end of endless frost."
 
-  socialIcons:
-    - name: github
-      url: "https://github.com/cheams"
-    - name: x
-      url: "https://x.com/yourname"
-
 menu:
   main:
     - identifier: posts
