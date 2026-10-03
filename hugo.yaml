@@ -73,6 +73,11 @@ params:
     Title: "👋 Welcome to Cheams’Log"
     Content: "The fragment of a dead volcano in my pocket, I walk to the end of endless frost."
 
+  # 首页社交图标（PaperMod 渲染在首页欢迎语下方）
+  socialIcons:
+    - name: github
+      url: "https://github.com/cheams"
+
 menu:
   main:
     - identifier: posts
