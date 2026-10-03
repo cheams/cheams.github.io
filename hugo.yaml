@@ -13,6 +13,12 @@ minify:
   disableXML: true
   minifyOutput: true
 
+# 允许 Markdown 中的原始 HTML（文章里的 <audio> 播放器、<details> 折叠来源）
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
 caches:
   images:
     dir: ":cacheDir/images"
